@@ -1,0 +1,20 @@
+{:tags ["yaml" "yml"]
+ :rules
+ [{:regex #"(#[^\n]*)"
+   :role :token/comment
+   :comment "Line comment"}
+  {:regex #"(\"(?:[^\"\\]|\\.)*\"|'[^']*')"
+   :role :token/string
+   :comment "Double or single quoted string"}
+  {:regex #"([\w][\w.-]*(?=\s*:))"
+   :role :token/keyword
+   :comment "Key (word before colon)"}
+  {:regex #"((?:true|false|null|~)\b)"
+   :role :token/keyword
+   :comment "Keyword literal"}
+  {:regex #"([-+]?(?:\d+\.?\d*(?:[eE][-+]?\d+)?))"
+   :role :token/number
+   :comment "Number"}
+  {:regex #"(---|\.\.\.)"
+   :role :token/operator
+   :comment "Document markers"}]}

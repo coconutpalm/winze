@@ -1,0 +1,66 @@
+;; Winze theme file — edit this to customize colors, fonts, and icons.
+;; Run "Reload Theme" from the command palette (Cmd+Shift+P) to apply.
+;;
+;; User overrides live in ~/.winze/theme.edn (copied from this bundled
+;; default on first launch). The user file is canonical; it is not
+;; re-merged from this file at runtime EXCEPT to fill in missing keys —
+;; so deleting a key from your user file reverts that slot to the
+;; bundled default, but otherwise your file wins.
+;;
+;; Icon overrides: drop image files into ~/.winze/icons/ and reference
+;; them by bare filename under :icons (see commented examples below).
+;; Leaving :icons {} uses the bundled icons. Missing files fall back to
+;; bundled with a warning in the reload-time MessageBox.
+;;
+;; Known limitation: the quill (edit), back, and forward toolbar icons are
+;; drawn programmatically with the stock amethyst/violet/lavender palette.
+;; If you change those palette colors below, those three icons will keep
+;; their original colors until a future release adds dynamic redraw.
+
+{:colors {:lavender         "#C4B8FF"
+          :amethyst         "#9B8FE0"
+          :deep-violet      "#7B6FC0"
+          :royal-purple     "#5548A0"
+          :indigo           "#4A3F90"
+          :deep-amethyst    "#3A2F80"
+          :crystal-white    "#E8E0FF"
+          :mine-shaft       "#1E1B2E"
+          :obsidian         "#241E5E"
+          :find-bar         "#3A335E"
+          :bedrock          "#0E0D18"
+          :pure-white       "#FFFFFF"
+          :check-green      "#66BB6A"
+          :spellcheck-error "#E5484A"}
+
+ :font-stacks
+ {:sans ["Inter" "Plus Jakarta Sans" "Outfit"
+         "Noto Sans" "Helvetica Neue" "Helvetica"]
+  :mono ["JetBrains Mono" "Fira Code"
+         "Noto Sans Mono" "Menlo" "Consolas" "Courier New"]}
+
+ :fonts
+ {:body             {:stack :sans :size 13 :style :normal}
+  :body-bold        {:stack :sans :size 13 :style :bold}
+  :body-italic      {:stack :sans :size 13 :style :italic}
+  :body-bold-italic {:stack :sans :size 13 :style :bold-italic}
+  :h1               {:stack :sans :size 24 :style :bold}
+  :h2               {:stack :sans :size 20 :style :bold}
+  :h3               {:stack :sans :size 17 :style :bold}
+  :h4               {:stack :sans :size 15 :style :bold}
+  :h5               {:stack :sans :size 13 :style :bold-italic}
+  :h6               {:stack :sans :size 13 :style :italic}
+  :mono             {:stack :mono :size 13 :style :normal}
+  :mono-bold        {:stack :mono :size 13 :style :bold}
+  :mono-italic      {:stack :mono :size 13 :style :italic}}
+
+ ;; :icons is OPTIONAL. Omitting a key uses the bundled default.
+ ;;
+ ;; Example (uncomment and drop PNGs into ~/.winze/icons/):
+ ;;
+ ;;  :icons {:app          {:src    "my-app-icon.png"}
+ ;;          :header       {:src    "my-wordmark.png"}
+ ;;          :statusbar    {:src-1x "my-tray.png"
+ ;;                         :src-2x "my-tray@2x.png"}
+ ;;          :tab-document {:src-1x "my-tab.png"
+ ;;                         :src-2x "my-tab@2x.png"}}
+ :icons {}}

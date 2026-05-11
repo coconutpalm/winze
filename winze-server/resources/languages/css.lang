@@ -1,0 +1,26 @@
+{:tags ["css"]
+ :rules
+ [{:regex #"(/\*[\s\S]*?\*/)"
+   :role :token/comment
+   :comment "Block comment"}
+  {:regex #"(\"[^\"]*\"|'[^']*')"
+   :role :token/string
+   :comment "String"}
+  {:regex #"(#[0-9a-fA-F]{3,8}\b)"
+   :role :token/number
+   :comment "Hex color"}
+  {:regex #"([.#][a-zA-Z_-][a-zA-Z0-9_-]*)"
+   :role :token/type
+   :comment "Selector (class/id)"}
+  {:regex #"(@[a-zA-Z-]+)"
+   :role :token/keyword
+   :comment "At-rule"}
+  {:regex #"([a-zA-Z-]+(?=\s*:))"
+   :role :token/builtin
+   :comment "Property name"}
+  {:regex #"(\d+\.?\d*(?:px|em|rem|%|vh|vw|pt|cm|mm|in|ch|ex|s|ms)?)"
+   :role :token/number
+   :comment "Number with optional unit"}
+  {:regex #"([{}();:,])"
+   :role :token/operator
+   :comment "Punctuation"}]}

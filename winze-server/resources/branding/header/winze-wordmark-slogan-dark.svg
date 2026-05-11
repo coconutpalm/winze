@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 110" width="340" height="110">
+  <!-- Winze wordmark + 2-line slogan. Dark text for light backgrounds.
+       Gem aligned to typography: top = i-dot, bottom = g-descender. -->
+  <defs>
+    <linearGradient id="wmdL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7B6FC0"/>
+      <stop offset="100%" stop-color="#3A2F80"/>
+    </linearGradient>
+    <linearGradient id="wmdR" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3A2F80"/>
+      <stop offset="100%" stop-color="#241E5E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Crystal icon mark — same geometry as light variant -->
+  <!-- Left crown facet -->
+  <polygon points="36,47 56,22 70,14" fill="#5548A0"/>
+  <!-- Right crown facet -->
+  <polygon points="104,47 84,22 70,14" fill="#3A2F80"/>
+  <!-- Left pavilion -->
+  <polygon points="36,47 70,14 70,98" fill="url(#wmdL)"/>
+  <!-- Right pavilion -->
+  <polygon points="104,47 70,14 70,98" fill="url(#wmdR)"/>
+  <!-- Table -->
+  <polygon points="56,22 84,22 70,14" fill="#9B8FE0" opacity="0.8"/>
+  <!-- Sparkle -->
+  <circle cx="63" cy="23" r="3" fill="#C4B8FF" opacity="0.5"/>
+  <circle cx="63" cy="23" r="1.4" fill="#C4B8FF" opacity="0.8"/>
+
+  <!-- All text right-aligned to a common right edge -->
+
+  <!-- Logotype: "winze" -->
+  <text x="322" y="46"
+        font-family="Inter, 'Plus Jakarta Sans', Outfit, -apple-system, 'Segoe UI', sans-serif"
+        font-size="48" font-weight="300" letter-spacing="4.5"
+        fill="#1E1B2E" text-anchor="end">winze</text>
+
+  <!-- Slogan line 1 -->
+  <text x="322" y="72"
+        font-family="Inter, 'Plus Jakarta Sans', Outfit, -apple-system, 'Segoe UI', sans-serif"
+        font-size="17" font-weight="400" letter-spacing="5"
+        fill="#5548A0" opacity="0.7" text-anchor="end">Nothing forgotten.</text>
+
+  <!-- Slogan line 2 -->
+  <text x="322" y="94"
+        font-family="Inter, 'Plus Jakarta Sans', Outfit, -apple-system, 'Segoe UI', sans-serif"
+        font-size="17" font-weight="400" letter-spacing="5"
+        fill="#5548A0" opacity="0.7" text-anchor="end">Everything found.</text>
+</svg>

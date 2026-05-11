@@ -1,0 +1,43 @@
+{:paths ["src"]
+
+ :deps
+ {datalevin/datalevin                             {:mvn/version "0.10.7"}
+  org.commonmark/commonmark                       {:mvn/version "0.24.0"}
+  org.commonmark/commonmark-ext-gfm-tables        {:mvn/version "0.24.0"}
+  org.commonmark/commonmark-ext-gfm-strikethrough {:mvn/version "0.24.0"}
+  org.commonmark/commonmark-ext-task-list-items   {:mvn/version "0.24.0"}
+  io.github.inference4j/inference4j-core           {:mvn/version "0.10.0"}
+  com.nextjournal/beholder                         {:mvn/version "1.0.2"}
+  clj-commons/clj-yaml                             {:mvn/version "1.0.27"}
+  com.hyperfiddle/rcf                              {:mvn/version "20220926-202227"}}
+
+ :aliases
+ {:dev
+  {:extra-paths ["dev"]
+   :extra-deps
+   {djblue/portal                        {:mvn/version "0.58.5"}
+    org.clojure/tools.namespace          {:mvn/version "1.5.0"}
+    org.clojure/java.classpath           {:mvn/version "1.1.0"}}
+   :jvm-opts
+   ["--add-opens=java.base/java.nio=ALL-UNNAMED"
+    "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED"
+    "--enable-native-access=ALL-UNNAMED"
+    "-Dhyperfiddle.rcf.generate-tests=true"]}
+
+  :test
+  {:jvm-opts ["--add-opens=java.base/java.nio=ALL-UNNAMED"
+              "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED"
+              "--enable-native-access=ALL-UNNAMED"
+              "-Dhyperfiddle.rcf.generate-tests=true"]
+   :extra-deps {eftest/eftest       {:mvn/version "0.6.0"}
+                cloverage/cloverage {:mvn/version "1.2.4"}}
+   :exec-fn cloverage.coverage/run-project
+   :exec-args {:test-ns-path ["src"]
+               :src-ns-path  ["src"]
+               :runner :eftest
+               :runner-opts {:multithread? false}}}
+
+  :build
+  {:deps {io.github.clojure/tools.build {:mvn/version "0.10.6"}
+          slipset/deps-deploy           {:mvn/version "0.2.2"}}
+   :ns-default build}}}

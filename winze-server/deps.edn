@@ -1,0 +1,45 @@
+{:paths ["src" "resources"]
+
+ :deps
+ {;; Clojure 1.12+ required — CDT uses clojure.repl.deps for dynamic SWT native loading.
+  ;; Must be declared explicitly so tools.build basis resolves it (not just the CLI root).
+  org.clojure/clojure {:mvn/version "1.12.3"}
+
+  ;; The library (local during development)
+  io.github.dorme/clj-llm-memory {:local/root "../clj-llm-memory"}
+
+  ;; nREPL for Babashka proxy communication
+  nrepl/nrepl {:mvn/version "1.3.0"}
+
+  ;; Logging
+  org.clojure/tools.logging {:mvn/version "1.3.0"}
+  ch.qos.logback/logback-classic {:mvn/version "1.5.6"}
+
+  ;; UI (SWT desktop toolkit — loaded at dev/runtime, excluded from uberjar AOT)
+  io.github.coconutpalm/clojure-desktop-toolkit {:mvn/version "0.5.1"}
+
+  ;; HTML rendering for live search results
+  hiccup/hiccup                                 {:mvn/version "2.0.0"}
+
+  ;; commonmark-java — Markdown → Hiccup renderer (replaces nextjournal/markdown)
+  org.commonmark/commonmark                       {:mvn/version "0.24.0"}
+  org.commonmark/commonmark-ext-gfm-tables        {:mvn/version "0.24.0"}
+  org.commonmark/commonmark-ext-gfm-strikethrough {:mvn/version "0.24.0"}
+  org.commonmark/commonmark-ext-task-list-items   {:mvn/version "0.24.0"}}
+
+ :aliases
+ {:build
+  {:deps {io.github.clojure/tools.build {:mvn/version "0.10.6"}}
+   :ns-default build}
+
+  :dev
+  {:extra-paths ["dev"]
+   :extra-deps
+   {djblue/portal                        {:mvn/version "0.58.5"}
+    org.clojure/tools.namespace          {:mvn/version "1.5.0"}
+    org.clojure/java.classpath           {:mvn/version "1.1.0"}}
+   :jvm-opts
+   ["--add-opens=java.base/java.nio=ALL-UNNAMED"
+    "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED"
+    "--enable-native-access=ALL-UNNAMED"
+    "-Dhyperfiddle.rcf.generate-tests=true"]}}}

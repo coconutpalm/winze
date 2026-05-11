@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- Windows system tray: full color crystal, 16x16 optimized. -->
+  <defs>
+    <linearGradient id="wCrysL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9B8FE0"/>
+      <stop offset="100%" stop-color="#5548A0"/>
+    </linearGradient>
+    <linearGradient id="wCrysR" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5548A0"/>
+      <stop offset="100%" stop-color="#2A2260"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Dark bg -->
+  <rect x="0.5" y="0.5" width="15" height="15" rx="2.5" fill="#0E0D18"/>
+
+  <!-- Left half of crystal -->
+  <polygon points="3,7.5 8,2.5 8,14.5" fill="url(#wCrysL)"/>
+  <!-- Right half -->
+  <polygon points="13,7.5 8,2.5 8,14.5" fill="url(#wCrysR)"/>
+
+  <!-- Table facet -->
+  <polygon points="5.5,4 10.5,4 8,2.5" fill="#C4B8FF" opacity="0.8"/>
+
+  <!-- Sparkle -->
+  <circle cx="6.5" cy="4" r="0.8" fill="#FFFFFF" opacity="0.8"/>
+</svg>

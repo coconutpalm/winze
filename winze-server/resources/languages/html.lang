@@ -1,0 +1,20 @@
+{:tags ["html" "htm"]
+ :rules
+ [{:regex #"(<!--[\s\S]*?-->)"
+   :role :token/comment
+   :comment "HTML comment"}
+  {:regex #"(</?[a-zA-Z][a-zA-Z0-9-]*)"
+   :role :token/keyword
+   :comment "Tag name"}
+  {:regex #"(\"[^\"]*\"|'[^']*')"
+   :role :token/string
+   :comment "Attribute value"}
+  {:regex #"([a-zA-Z][a-zA-Z0-9-]*(?=\s*=))"
+   :role :token/builtin
+   :comment "Attribute name"}
+  {:regex #"(>|/>)"
+   :role :token/operator
+   :comment "Tag close"}
+  {:regex #"(&[a-zA-Z]+;|&#\d+;)"
+   :role :token/number
+   :comment "HTML entity"}]}

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- Linux indicator: full color crystal, 24x24. -->
+  <defs>
+    <linearGradient id="linL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9B8FE0"/>
+      <stop offset="100%" stop-color="#5548A0"/>
+    </linearGradient>
+    <linearGradient id="linR" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4A3F90"/>
+      <stop offset="100%" stop-color="#2A2260"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Left crown -->
+  <polygon points="4,11 8.5,5.5 12,4.5" fill="#6358B0"/>
+  <!-- Right crown -->
+  <polygon points="20,11 15.5,5.5 12,4.5" fill="#4A3F90"/>
+
+  <!-- Left pavilion -->
+  <polygon points="4,11 12,4.5 12,21" fill="url(#linL)"/>
+  <!-- Right pavilion -->
+  <polygon points="20,11 12,4.5 12,21" fill="url(#linR)"/>
+
+  <!-- Table -->
+  <polygon points="8.5,5.5 15.5,5.5 12,4.5" fill="#C4B8FF" opacity="0.8"/>
+
+  <!-- Sparkle -->
+  <circle cx="10" cy="5.8" r="1" fill="#FFFFFF" opacity="0.7"/>
+</svg>

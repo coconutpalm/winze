@@ -1,0 +1,61 @@
+{:tags          ["clojure" "clj" "cljs" "edn"]
+ :case-sensitive true
+ :rules
+ [{:regex #"(;[^\n]*)"
+   :role :token/comment
+   :comment "Line comment"}
+  {:regex #"(\"(?:[^\"\\]|\\.)*\")"
+   :role :token/string
+   :comment "String literal"}
+  {:regex #"(#\"(?:[^\"\\]|\\.)*\")"
+   :role :token/string
+   :comment "Regex literal"}
+  {:regex #"(\\(?:newline|space|tab|backspace|formfeed|return|[^ \n]))"
+   :role :token/string
+   :comment "Character literal"}
+  {:regex #"(:[:a-zA-Z_][\w./*+-]*)"
+   :role :token/keyword
+   :comment "Keyword"}
+  {:regex #"([-+]?(?:\d+\.?\d*(?:[eE][-+]?\d+)?|\d+/\d+|0[xX][0-9a-fA-F]+)[MNr]?)"
+   :role :token/number
+   :comment "Number (decimal, ratio, hex)"}
+  {:regex #"([a-zA-Z_$!?+\-*/<>=][\w./*+\-!?'<>=]*)"
+   :role :token/identifier
+   :comment "Symbol — classified via keywords/builtins"}]
+ :keywords
+ #{"def" "defn" "defn-" "defonce" "defmacro" "defmethod" "defmulti"
+   "defprotocol" "defrecord" "deftype" "defstruct"
+   "fn" "fn*" "let" "loop" "recur" "if" "if-let" "if-not" "if-some"
+   "when" "when-let" "when-not" "when-some" "when-first"
+   "do" "quote" "var" "throw" "try" "catch" "finally"
+   "case" "cond" "cond->" "cond->>" "condp"
+   "and" "or" "not"
+   "for" "doseq" "dotimes" "doall" "dorun"
+   "ns" "require" "import" "use" "refer" "in-ns"
+   "binding" "with-open" "with-local-vars" "with-redefs"
+   "lazy-seq" "lazy-cat" "delay" "future" "promise"
+   "atom" "ref" "agent" "swap!" "reset!" "alter" "send" "send-off"
+   "deref" "set!" "new" "monitor-enter" "monitor-exit"
+   "reify" "proxy" "extend-type" "extend-protocol"
+   "->>" "->" "as->" "some->" "some->>"
+   "comp" "partial" "juxt" "complement" "constantly" "identity"
+   "apply" "map" "filter" "reduce" "into" "mapv" "filterv"
+   "assoc" "dissoc" "update" "get" "get-in" "assoc-in" "update-in"
+   "conj" "cons" "concat" "first" "rest" "next" "seq" "vec" "set"
+   "str" "pr-str" "prn" "println" "format"
+   "true" "false" "nil"}
+ :builtins
+ #{"count" "empty?" "not-empty" "seq?" "map?" "vector?" "set?"
+   "string?" "number?" "keyword?" "symbol?" "fn?" "nil?" "some?"
+   "pos?" "neg?" "zero?" "even?" "odd?"
+   "inc" "dec" "+" "-" "*" "/" "mod" "rem" "quot"
+   "=" "==" "not=" "<" ">" "<=" ">="
+   "contains?" "keys" "vals" "merge" "select-keys"
+   "take" "drop" "partition" "group-by" "sort" "sort-by" "reverse"
+   "range" "repeat" "iterate" "cycle"
+   "interpose" "interleave" "zipmap" "frequencies"
+   "name" "namespace" "keyword" "symbol" "type" "class"
+   "re-find" "re-matches" "re-seq" "re-pattern"
+   "slurp" "spit" "read-string" "pr-str"
+   "nth" "peek" "pop" "subvec"
+   "meta" "with-meta" "vary-meta"}}

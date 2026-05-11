@@ -1,0 +1,73 @@
+[;; === Esc hierarchy ===
+ ;; Most-specific bindings win via predicate count (specificity rule).
+
+ ;; Editor with no popups -> switch to viewer
+ {:key :esc :when {:in :editor}
+  :command :workbench/escape-editor
+  :comment "Editor: switch to view mode"}
+
+ ;; Viewer -> go to search
+ {:key :esc :when {:in :viewer}
+  :command :workbench/escape-viewer
+  :comment "Viewer: go to live search"}
+
+ ;; Search box -> clear and reset
+ {:key :esc :when {:in :search-box}
+  :command :workbench/escape-search
+  :comment "Search: clear text and reset history"}
+
+ ;; Global Esc fallback (no scope set)
+ {:key :esc
+  :command :workbench/escape-global
+  :comment "Global: focus search, clear selection"}
+
+ ;; === Command palette ===
+ {:key :esc :when {:active-popup :command-palette}
+  :command :workbench/dismiss-command-palette
+  :comment "Dismiss command palette"}
+
+ ;; === Find bar ===
+ {:key :esc :when {:active-popup :find-bar}
+  :command :workbench/dismiss-find-bar
+  :comment "Dismiss find bar"}
+
+ ;; === Link preview ===
+ {:key :esc :when {:active-popup :link-preview}
+  :command :workbench/dismiss-link-preview
+  :comment "Dismiss link preview"}
+
+ ;; === Workbench ===
+ {:key \p :mod #{:mod1 :shift}
+  :command :workbench/open-command-palette
+  :comment "Open command palette"}
+ {:key \e :mod #{:mod1}
+  :command :workbench/toggle-mode
+  :comment "Toggle view/edit mode"}
+
+ ;; === Search history navigation ===
+ ;; Cmd+[ / Alt+Left -> navigate back
+ {:key \[ :mod #{:mod1}
+  :command :workbench/navigate-back
+  :comment "Navigate back in search history"}
+ ;; Alt+Left is scoped OUT of :editor because macOS StyledText uses
+ ;; Option+Left for native word-backward navigation; binding it globally
+ ;; shadowed the native behavior. Cmd+[ remains available in the editor.
+ {:key :left :mod #{:alt} :when {:in #{:viewer :search-box :global}}
+  :command :workbench/navigate-back
+  :comment "Navigate back in search history (Alt+Left, non-editor)"}
+
+ ;; Cmd+] / Alt+Right -> navigate forward
+ {:key \] :mod #{:mod1}
+  :command :workbench/navigate-forward
+  :comment "Navigate forward in search history"}
+ {:key :right :mod #{:alt} :when {:in #{:viewer :search-box :global}}
+  :command :workbench/navigate-forward
+  :comment "Navigate forward in search history (Alt+Right, non-editor)"}
+
+ ;; === Editor (scoped) ===
+ {:key \z :mod #{:mod1} :when {:in :editor}
+  :command :editor/undo
+  :comment "Undo"}
+ {:key \z :mod #{:mod1 :shift} :when {:in :editor}
+  :command :editor/redo
+  :comment "Redo"}]

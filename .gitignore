@@ -1,0 +1,16 @@
+.DS_Store
+
+# Ignore Clojure IDE artifacts
+.lsp
+.portal
+.calva
+.clj-kondo
+.cpcache
+.nrepl-port
+target/
+release/
+
+# Ignore the planning vector database artifacts
+.vector-db
+venv
+__pycache__

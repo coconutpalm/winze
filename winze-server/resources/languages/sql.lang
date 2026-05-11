@@ -1,0 +1,41 @@
+{:tags           ["sql"]
+ :case-sensitive false
+ :rules
+ [{:regex #"(--[^\n]*|/\*[\s\S]*?\*/)"
+   :role :token/comment
+   :comment "Line comment or block comment"}
+  {:regex #"(\"[^\"]*\"|'(?:[^'\\]|\\.)*')"
+   :role :token/string
+   :comment "String literal"}
+  {:regex #"(\d+\.?\d*(?:[eE][-+]?\d+)?)"
+   :role :token/number
+   :comment "Number"}
+  {:regex #"([a-zA-Z_][a-zA-Z0-9_]*)"
+   :role :token/identifier
+   :comment "Identifier — classified via keywords/builtins"}
+  {:regex #"([(),.;*=<>!+\-/]|<>|<=|>=|!=|\|\|)"
+   :role :token/operator
+   :comment "Operator/punctuation"}]
+ :keywords
+ #{"select" "from" "where" "and" "or" "not" "in" "is" "null" "like"
+   "between" "exists" "case" "when" "then" "else" "end"
+   "insert" "into" "values" "update" "set" "delete"
+   "create" "alter" "drop" "table" "index" "view" "database" "schema"
+   "join" "inner" "left" "right" "outer" "cross" "on" "using"
+   "group" "by" "order" "having" "limit" "offset" "fetch" "next" "rows"
+   "union" "all" "intersect" "except" "distinct" "as"
+   "primary" "key" "foreign" "references" "constraint" "unique" "check"
+   "default" "auto_increment" "serial"
+   "begin" "commit" "rollback" "transaction" "savepoint"
+   "grant" "revoke" "with" "recursive" "cascade" "restrict"
+   "asc" "desc" "nulls" "first" "last" "true" "false"}
+ :builtins
+ #{"count" "sum" "avg" "min" "max" "coalesce" "nullif" "cast"
+   "upper" "lower" "trim" "length" "substring" "replace" "concat"
+   "now" "current_timestamp" "current_date" "extract" "date_trunc"
+   "abs" "round" "ceil" "floor" "mod" "power" "sqrt"
+   "row_number" "rank" "dense_rank" "lag" "lead" "over" "partition"
+   "string_agg" "array_agg" "json_agg" "jsonb_agg"
+   "int" "integer" "bigint" "smallint" "decimal" "numeric" "real"
+   "float" "double" "precision" "varchar" "char" "text" "boolean"
+   "date" "time" "timestamp" "interval" "json" "jsonb" "uuid" "bytea"}}

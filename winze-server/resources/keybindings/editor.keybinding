@@ -1,0 +1,116 @@
+[;; === Inline formatting ===
+ {:key \b :mod #{:mod1} :when {:in :editor}
+  :command :editor/toggle-bold
+  :comment "Toggle bold"}
+ {:key \i :mod #{:mod1} :when {:in :editor}
+  :command :editor/toggle-italic
+  :comment "Toggle italic"}
+ {:key \s :mod #{:mod1 :shift} :when {:in :editor}
+  :command :editor/toggle-strikethrough
+  :comment "Toggle strikethrough"}
+ {:key \e :mod #{:mod1 :shift} :when {:in :editor}
+  :command :editor/toggle-inline-code
+  :comment "Toggle inline code"}
+ {:key \h :mod #{:mod1 :shift} :when {:in :editor}
+  :command :editor/toggle-highlight
+  :comment "Toggle highlight"}
+
+ ;; === Headings ===
+ {:key \1 :mod #{:mod1} :when {:in :editor}
+  :command :editor/heading-1
+  :comment "Heading 1"}
+ {:key \2 :mod #{:mod1} :when {:in :editor}
+  :command :editor/heading-2
+  :comment "Heading 2"}
+ {:key \3 :mod #{:mod1} :when {:in :editor}
+  :command :editor/heading-3
+  :comment "Heading 3"}
+ {:key \4 :mod #{:mod1} :when {:in :editor}
+  :command :editor/heading-4
+  :comment "Heading 4"}
+ {:key \5 :mod #{:mod1} :when {:in :editor}
+  :command :editor/heading-5
+  :comment "Heading 5"}
+ {:key \6 :mod #{:mod1} :when {:in :editor}
+  :command :editor/heading-6
+  :comment "Heading 6"}
+
+ ;; === Lists ===
+ ;; Shift+number produces symbols on macOS — register both keyCode variants
+ {:key \8 :mod #{:mod1 :shift} :when {:in :editor}
+  :command :editor/toggle-bullet
+  :comment "Toggle bullet list (keyCode 8)"}
+ {:key \* :mod #{:mod1} :when {:in :editor}
+  :command :editor/toggle-bullet
+  :comment "Toggle bullet list (macOS: Cmd+Shift+8 sends Cmd+*)"}
+ {:key \7 :mod #{:mod1 :shift} :when {:in :editor}
+  :command :editor/toggle-numbered
+  :comment "Toggle numbered list (keyCode 7)"}
+ {:key \& :mod #{:mod1} :when {:in :editor}
+  :command :editor/toggle-numbered
+  :comment "Toggle numbered list (macOS: Cmd+Shift+7 sends Cmd+&)"}
+ {:key \4 :mod #{:mod1 :shift} :when {:in :editor}
+  :command :editor/toggle-checkbox
+  :comment "Toggle checkbox (keyCode 4)"}
+ {:key \$ :mod #{:mod1} :when {:in :editor}
+  :command :editor/toggle-checkbox
+  :comment "Toggle checkbox (macOS: Cmd+Shift+4 sends Cmd+$)"}
+ {:key \. :mod #{:mod1 :shift} :when {:in :editor}
+  :command :editor/toggle-blockquote
+  :comment "Toggle blockquote"}
+
+ ;; === Line operations ===
+ {:key :tab :when {:in :editor}
+  :command :editor/indent
+  :comment "Indent"}
+ {:key :tab :mod #{:shift} :when {:in :editor}
+  :command :editor/outdent
+  :comment "Outdent"}
+ {:key :up :mod #{:alt} :when {:in :editor}
+  :command :editor/move-line-up
+  :comment "Move line up"}
+ {:key :down :mod #{:alt} :when {:in :editor}
+  :command :editor/move-line-down
+  :comment "Move line down"}
+ {:key \k :mod #{:mod1 :shift} :when {:in :editor}
+  :command :editor/delete-line
+  :comment "Delete line"}
+ {:key \d :mod #{:mod1 :shift} :when {:in :editor}
+  :command :editor/duplicate-line
+  :comment "Duplicate line"}
+ {:key \l :mod #{:mod1} :when {:in :editor}
+  :command :editor/select-line
+  :comment "Select line"}
+
+ ;; === Selection ===
+ {:key \a :mod #{:mod1} :when {:in :editor}
+  :command :editor/select-all
+  :comment "Select all"}
+
+ ;; === Delete visible line ===
+ {:key \d :mod #{:mod1} :when {:in :editor}
+  :command :editor/delete-visible-line
+  :comment "Delete visible (wrapped) line"}
+
+ ;; === Enter: continue list ===
+ {:key :enter :when {:in :editor}
+  :command :editor/continue-list
+  :comment "Continue list or insert newline"}
+
+ ;; === Links ===
+ {:key \k :mod #{:mod1} :when {:in :editor}
+  :command :editor/insert-link
+  :comment "Insert link (content assist)"}
+
+ ;; === Find / Replace ===
+ {:key \f :mod #{:mod1} :when {:in :editor}
+  :command :editor/find
+  :comment "Find in file (editor)"}
+ {:key \r :mod #{:mod1} :when {:in :editor}
+  :command :editor/find-replace
+  :comment "Find and replace in file"}
+
+ ;; === Spellcheck ===
+ {:key :space :mod #{:mod1} :when {:in :editor}
+  :command :editor/spellcheck-suggest
+  :comment "Show spellcheck suggestions at caret"}]

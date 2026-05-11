@@ -1,0 +1,26 @@
+#!/bin/sh
+# Launch the Winze Plan Server using the bundled JRE.
+# This script is designed to be run from the installed location
+# (~/.local/share/winze/) or from a package directory.
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+WINZE_HOME="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+# macOS requires -XstartOnFirstThread for SWT (must be the very first JVM argument)
+case "$(uname -s)" in
+  Darwin)
+    exec "$WINZE_HOME/jre/bin/java" \
+      -XstartOnFirstThread \
+      --add-opens=java.base/java.nio=ALL-UNNAMED \
+      --add-opens=java.base/sun.nio.ch=ALL-UNNAMED \
+      --enable-native-access=ALL-UNNAMED \
+      -jar "$WINZE_HOME/lib/winze-server.jar" "$@"
+    ;;
+  *)
+    exec "$WINZE_HOME/jre/bin/java" \
+      --add-opens=java.base/java.nio=ALL-UNNAMED \
+      --add-opens=java.base/sun.nio.ch=ALL-UNNAMED \
+      --enable-native-access=ALL-UNNAMED \
+      -jar "$WINZE_HOME/lib/winze-server.jar" "$@"
+    ;;
+esac

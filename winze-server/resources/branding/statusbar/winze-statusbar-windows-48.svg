@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <!-- Windows icon 48x48: more detail. -->
+  <defs>
+    <radialGradient id="w48bg" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#1E1B2E"/>
+      <stop offset="100%" stop-color="#0A0912"/>
+    </radialGradient>
+    <linearGradient id="w48L" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9B8FE0"/>
+      <stop offset="100%" stop-color="#5548A0"/>
+    </linearGradient>
+    <linearGradient id="w48R" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4A3F90"/>
+      <stop offset="100%" stop-color="#2A2260"/>
+    </linearGradient>
+    <linearGradient id="w48T" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#C4B8FF"/>
+      <stop offset="100%" stop-color="#7B6FC0"/>
+    </linearGradient>
+    <radialGradient id="w48glow" cx="50%" cy="45%" r="40%">
+      <stop offset="0%" stop-color="#7B6FC0" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#1E1B2E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect x="1" y="1" width="46" height="46" rx="8" fill="url(#w48bg)"/>
+
+  <!-- Ambient glow -->
+  <ellipse cx="24" cy="24" rx="18" ry="16" fill="url(#w48glow)"/>
+
+  <!-- Crown: left -->
+  <polygon points="8,21 16,11 24,9" fill="#6358B0"/>
+  <!-- Crown: right -->
+  <polygon points="40,21 32,11 24,9" fill="#4A3F90"/>
+
+  <!-- Left pavilion -->
+  <polygon points="8,21 24,9 24,42" fill="url(#w48L)"/>
+  <!-- Right pavilion -->
+  <polygon points="40,21 24,9 24,42" fill="url(#w48R)"/>
+
+  <!-- Table -->
+  <polygon points="16,11 32,11 24,9" fill="url(#w48T)"/>
+
+  <!-- Internal facet lines -->
+  <line x1="24" y1="13" x2="24" y2="38" stroke="#C4B8FF" stroke-width="0.6" opacity="0.15"/>
+  <line x1="16" y1="18" x2="28" y2="34" stroke="#C4B8FF" stroke-width="0.5" opacity="0.1"/>
+
+  <!-- Sparkle on table -->
+  <circle cx="19" cy="11.5" r="2" fill="#FFFFFF" opacity="0.6"/>
+  <circle cx="19" cy="11.5" r="1" fill="#FFFFFF" opacity="0.9"/>
+
+  <!-- Edge highlights -->
+  <line x1="8" y1="21" x2="24" y2="42" stroke="#9B8FE0" stroke-width="0.5" opacity="0.25"/>
+  <line x1="16" y1="11" x2="24" y2="9" stroke="#C4B8FF" stroke-width="0.7" opacity="0.3"/>
+</svg>

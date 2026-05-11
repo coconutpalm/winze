@@ -1,0 +1,34 @@
+{:tags          ["bash" "sh" "shell" "zsh"]
+ :case-sensitive true
+ :rules
+ [{:regex #"(#[^\n]*)"
+   :role :token/comment
+   :comment "Line comment"}
+  {:regex #"(\"(?:[^\"\\]|\\.)*\"|'[^']*')"
+   :role :token/string
+   :comment "Double/single quoted string"}
+  {:regex #"(\$\{[^}]+\}|\$[a-zA-Z_][a-zA-Z0-9_]*)"
+   :role :token/builtin
+   :comment "Variable expansion"}
+  {:regex #"(\d+)"
+   :role :token/number
+   :comment "Number"}
+  {:regex #"([|&;()<>]|>>|<<|&&|\|\|)"
+   :role :token/operator
+   :comment "Operator/punctuation"}
+  {:regex #"([a-zA-Z_][a-zA-Z0-9_.-]*)"
+   :role :token/identifier
+   :comment "Identifier — classified via keywords/builtins"}]
+ :keywords
+ #{"if" "then" "else" "elif" "fi" "for" "while" "until" "do" "done"
+   "case" "esac" "in" "function" "select" "time" "coproc"
+   "return" "exit" "break" "continue" "shift" "trap"
+   "export" "local" "declare" "typeset" "readonly" "unset"
+   "source" "eval" "exec" "set" "shopt"}
+ :builtins
+ #{"echo" "printf" "read" "cd" "pwd" "ls" "cat" "grep" "sed" "awk"
+   "find" "sort" "uniq" "wc" "head" "tail" "cut" "tr" "xargs"
+   "mkdir" "rm" "cp" "mv" "chmod" "chown" "ln" "touch"
+   "curl" "wget" "ssh" "scp" "rsync"
+   "git" "make" "docker" "kubectl" "npm" "yarn"
+   "test" "[" "true" "false"}}

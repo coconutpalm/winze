@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 80" width="340" height="80">
+  <!-- Winze wordmark: crystal icon + logotype. Light text on dark backgrounds. -->
+  <defs>
+    <linearGradient id="wmL" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9B8FE0"/>
+      <stop offset="100%" stop-color="#5548A0"/>
+    </linearGradient>
+    <linearGradient id="wmR" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4A3F90"/>
+      <stop offset="100%" stop-color="#2A2260"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Crystal icon mark -->
+  <g transform="translate(10, 4)">
+    <!-- Left crown -->
+    <polygon points="8,34 20,16 32,12" fill="#6358B0"/>
+    <!-- Right crown -->
+    <polygon points="56,34 44,16 32,12" fill="#4A3F90"/>
+    <!-- Left pavilion -->
+    <polygon points="8,34 32,12 32,72" fill="url(#wmL)"/>
+    <!-- Right pavilion -->
+    <polygon points="56,34 32,12 32,72" fill="url(#wmR)"/>
+    <!-- Table -->
+    <polygon points="20,16 44,16 32,12" fill="#C4B8FF" opacity="0.8"/>
+    <!-- Sparkle -->
+    <circle cx="25" cy="17" r="2.5" fill="#FFFFFF" opacity="0.65"/>
+    <circle cx="25" cy="17" r="1.2" fill="#FFFFFF" opacity="0.9"/>
+  </g>
+
+  <!-- Logotype -->
+  <text x="82" y="55"
+        font-family="Inter, 'Plus Jakarta Sans', Outfit, -apple-system, 'Segoe UI', sans-serif"
+        font-size="44" font-weight="300" letter-spacing="4"
+        fill="#E8E0FF">winze</text>
+</svg>

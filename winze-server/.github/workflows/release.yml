@@ -1,0 +1,90 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build (${{ matrix.target }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: macos-arm64
+            runs-on: macos-14
+          - target: linux-amd64
+            runs-on: ubuntu-latest
+          - target: linux-arm64
+            runs-on: ubuntu-24.04-arm
+          - target: windows-amd64
+            runs-on: windows-latest
+
+    runs-on: ${{ matrix.runs-on }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - uses: DeLaGuardo/setup-clojure@13.0
+        with:
+          cli: latest
+
+      # Windows: ensure make is available (Git Bash / GNU make via choco)
+      - name: Install make (Windows)
+        if: matrix.target == 'windows-amd64'
+        shell: pwsh
+        run: choco install make --no-progress -y
+
+      - name: Build package (Unix)
+        if: matrix.target != 'windows-amd64'
+        working-directory: winze-server
+        run: make package PLATFORM=${{ matrix.target }}
+
+      - name: Build package (Windows)
+        if: matrix.target == 'windows-amd64'
+        working-directory: winze-server
+        shell: bash
+        run: make package PLATFORM=windows-amd64
+
+      - name: Build .app + .dmg (macOS only)
+        if: matrix.target == 'macos-arm64'
+        working-directory: winze-server
+        run: make dmg
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: winze-${{ matrix.target }}
+          if-no-files-found: ignore
+          path: |
+            winze-server/target/winze-${{ matrix.target }}.tar.gz
+            winze-server/target/winze-${{ matrix.target }}.zip
+            winze-server/target/Winze-macos-arm64.dmg
+
+  release:
+    name: Publish GitHub Release
+    needs: build
+    runs-on: ubuntu-latest
+    # Only publish a release when triggered by a tag push, not workflow_dispatch
+    if: startsWith(github.ref, 'refs/tags/v')
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - name: List artifacts
+        run: ls -lh artifacts/
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/*
+          generate_release_notes: true

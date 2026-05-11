@@ -1,0 +1,39 @@
+{:tags          ["python" "py"]
+ :case-sensitive true
+ :rules
+ [{:regex #"(#[^\n]*)"
+   :role :token/comment
+   :comment "Line comment"}
+  {:regex #"(\"\"\"[\s\S]*?\"\"\"|'''[\s\S]*?''')"
+   :role :token/string
+   :comment "Triple-quoted string"}
+  {:regex #"(\"(?:[^\"\\]|\\.)*\"|'(?:[^'\\]|\\.)*')"
+   :role :token/string
+   :comment "Single/double quoted string"}
+  {:regex #"(\d+\.?\d*(?:[eE][-+]?\d+)?|0[xX][0-9a-fA-F]+|0[bB][01]+|0[oO][0-7]+)"
+   :role :token/number
+   :comment "Number (decimal, hex, binary, octal)"}
+  {:regex #"(@[a-zA-Z_][a-zA-Z0-9_.]*)"
+   :role :token/builtin
+   :comment "Decorator"}
+  {:regex #"([a-zA-Z_][a-zA-Z0-9_]*)"
+   :role :token/identifier
+   :comment "Identifier — classified via keywords/builtins/type-pattern"}]
+ :keywords
+ #{"and" "as" "assert" "async" "await" "break" "class" "continue"
+   "def" "del" "elif" "else" "except" "finally" "for" "from" "global"
+   "if" "import" "in" "is" "lambda" "nonlocal" "not" "or" "pass"
+   "raise" "return" "try" "while" "with" "yield"
+   "True" "False" "None"}
+ :builtins
+ #{"print" "len" "range" "enumerate" "zip" "map" "filter" "sorted"
+   "list" "dict" "set" "tuple" "int" "float" "str" "bool" "bytes"
+   "type" "isinstance" "issubclass" "hasattr" "getattr" "setattr"
+   "open" "input" "super" "property" "classmethod" "staticmethod"
+   "abs" "min" "max" "sum" "round" "pow" "divmod"
+   "iter" "next" "reversed" "all" "any"
+   "repr" "hash" "id" "hex" "oct" "bin" "chr" "ord"
+   "format" "vars" "dir" "help"
+   "Exception" "ValueError" "TypeError" "KeyError" "IndexError"
+   "AttributeError" "ImportError" "RuntimeError" "StopIteration"}
+ :type-pattern #"[A-Z].*"}

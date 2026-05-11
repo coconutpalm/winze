@@ -1,0 +1,44 @@
+#!/bin/sh
+# macOS .app launcher for Winze.
+# Lives at Contents/MacOS/winze-launcher; resources at Contents/Resources/.
+#
+# On first launch (detected by absence of ~/.local/share/winze/.installed),
+# runs install.sh to register the MCP server and install Claude Code skills.
+# Subsequent launches skip installation.
+#
+# -XstartOnFirstThread MUST be the first JVM argument — SWT/Cocoa requires
+# the event loop on thread 0. This is a hard macOS-only requirement.
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+APP_RESOURCES="$(cd "$SCRIPT_DIR/../Resources" && pwd)"
+WINZE_DATA="$HOME/.local/share/winze"
+
+# First-run: register MCP server and install skills/rules
+if [ ! -f "$WINZE_DATA/.installed" ]; then
+  "$APP_RESOURCES/install.sh" || true
+  mkdir -p "$WINZE_DATA"
+  touch "$WINZE_DATA/.installed"
+fi
+
+# Run the JVM as a child of this shell (NOT via exec). When launchd spawns
+# the JVM directly as the LaunchServices-tracked app process on macOS 26,
+# SystemUIServer refuses to render the NSStatusItem view for that process
+# (the tray icon is registered — visible to Accessibility APIs at size 24×24 —
+# but renders zero pixels). Interposing this shell as the parent breaks the
+# lineage and fixes rendering.
+# -Xdock flags set the Dock name/icon while the JVM is booting (before SWT does).
+"$APP_RESOURCES/jre/bin/java" \
+  -XstartOnFirstThread \
+  -Xdock:name=Winze \
+  "-Xdock:icon=$APP_RESOURCES/winze.icns" \
+  --add-opens=java.base/java.nio=ALL-UNNAMED \
+  --add-opens=java.base/sun.nio.ch=ALL-UNNAMED \
+  --enable-native-access=ALL-UNNAMED \
+  -jar "$APP_RESOURCES/lib/winze-server.jar" &
+
+JAVA_PID=$!
+# Forward Cmd-Q / Force Quit (launchd → sh) to the JVM child.
+trap 'kill -TERM "$JAVA_PID" 2>/dev/null; wait "$JAVA_PID"' TERM INT HUP
+wait "$JAVA_PID"

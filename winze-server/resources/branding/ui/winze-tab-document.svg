@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <defs>
+
+    <!-- Body: Royal Purple → Deep Amethyst, top to bottom-right -->
+    <linearGradient id="docBody" x1="10%" y1="0%" x2="90%" y2="100%">
+      <stop offset="0%"   stop-color="#5548A0"/>
+      <stop offset="60%"  stop-color="#4A3F90"/>
+      <stop offset="100%" stop-color="#3A2F80"/>
+    </linearGradient>
+
+    <!-- Left-edge highlight: simulate top-left light source on the paper surface -->
+    <linearGradient id="bodyEdge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"  stop-color="#9B8FE0" stop-opacity="0.18"/>
+      <stop offset="30%" stop-color="#9B8FE0" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#9B8FE0" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Fold flap: Amethyst → Deep Violet — the paper's backside catching light -->
+    <linearGradient id="docFold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#9B8FE0"/>
+      <stop offset="60%"  stop-color="#7B6FC0"/>
+      <stop offset="100%" stop-color="#6358B0"/>
+    </linearGradient>
+
+    <!-- Fold shadow: darkens the body just below the fold edge -->
+    <linearGradient id="foldShadow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#241E5E" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#241E5E" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Spark: white bloom for the fold corner highlight -->
+    <radialGradient id="foldSpark" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#FFFFFF"/>
+      <stop offset="35%"  stop-color="#E8E0FF"/>
+      <stop offset="100%" stop-color="#C4B8FF" stop-opacity="0"/>
+    </radialGradient>
+
+  </defs>
+
+  <!-- === DOCUMENT BODY: rectangle with dog-ear top-right corner === -->
+  <!--     top-left(3,2) → before-fold(15,2) → fold-vertex(21,8) → bottom-right(21,22) → bottom-left(3,22) -->
+  <path d="M 3 2 L 15 2 L 21 8 L 21 22 L 3 22 Z"
+        fill="url(#docBody)"/>
+
+  <!-- Left-to-right highlight wash: simulates top-left light hitting the page -->
+  <path d="M 3 2 L 15 2 L 21 8 L 21 22 L 3 22 Z"
+        fill="url(#bodyEdge)"/>
+
+  <!-- === FOLD SHADOW: darkens body at the fold crease === -->
+  <path d="M 15 8 L 21 8 L 15 2 Z"
+        fill="url(#foldShadow)"/>
+
+  <!-- === FOLD FLAP: lighter Amethyst — the paper backside === -->
+  <path d="M 15 2 L 21 8 L 15 8 Z"
+        fill="url(#docFold)"/>
+
+  <!-- Fold crease line: Dark Amethyst, subtle divider -->
+  <line x1="15" y1="2" x2="15" y2="8"
+        stroke="#3A2F80" stroke-width="0.75" opacity="0.9"/>
+
+  <!-- === BORDER: faint edge definition === -->
+  <path d="M 3 2 L 15 2 L 21 8 L 21 22 L 3 22 Z"
+        fill="none" stroke="#7B6FC0" stroke-width="0.6" opacity="0.45"/>
+
+  <!-- Top and left edge highlights: brighter stroke, top-left light source -->
+  <path d="M 3 22 L 3 2 L 15 2"
+        fill="none" stroke="#9B8FE0" stroke-width="0.75"
+        stroke-linecap="round" opacity="0.5"/>
+
+  <!-- === CONTENT LINES: Lavender Crystal — represent document text === -->
+  <line x1="6" y1="12" x2="18" y2="12"
+        stroke="#C4B8FF" stroke-width="1.5" stroke-linecap="round" opacity="0.75"/>
+  <line x1="6" y1="15" x2="18" y2="15"
+        stroke="#C4B8FF" stroke-width="1.5" stroke-linecap="round" opacity="0.75"/>
+  <line x1="6" y1="18" x2="13" y2="18"
+        stroke="#C4B8FF" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- === SPARK: Crystal White bloom on the fold corner === -->
+  <circle cx="17" cy="5.5" r="1.8" fill="url(#foldSpark)" opacity="0.75"/>
+
+</svg>

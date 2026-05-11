@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- Freedesktop symbolic icon: pure monochrome crystal, 16x16.
+       GNOME/GTK recolors currentColor automatically. -->
+
+  <!-- Left half -->
+  <polygon points="2.5,7.5 8,2 8,15" fill="currentColor" opacity="0.7"/>
+  <!-- Right half -->
+  <polygon points="13.5,7.5 8,2 8,15" fill="currentColor" opacity="0.5"/>
+
+  <!-- Table -->
+  <polygon points="5,4 11,4 8,2" fill="currentColor" opacity="0.9"/>
+
+  <!-- Sparkle dot -->
+  <circle cx="6.2" cy="4.2" r="0.7" fill="currentColor"/>
+</svg>

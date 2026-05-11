@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" width="36" height="36">
+  <!-- macOS menu bar template @2x: crystal silhouette, black + alpha. -->
+
+  <!-- Left crown facet -->
+  <polygon points="6,16 13,8 18,7" fill="#000" opacity="0.55"/>
+  <!-- Right crown facet -->
+  <polygon points="30,16 23,8 18,7" fill="#000" opacity="0.4"/>
+
+  <!-- Table -->
+  <polygon points="13,8 23,8 18,7" fill="#000" opacity="0.75"/>
+
+  <!-- Left pavilion -->
+  <polygon points="6,16 18,7 18,32" fill="#000" opacity="0.7"/>
+  <!-- Right pavilion -->
+  <polygon points="30,16 18,7 18,32" fill="#000" opacity="0.5"/>
+
+  <!-- Table highlight band -->
+  <polygon points="14,8.4 22,8.4 19,7.4 16,7.4" fill="#000" opacity="0.9"/>
+
+  <!-- Sparkle on table -->
+  <circle cx="16.4" cy="8.4" r="1.2" fill="#000" opacity="0.95"/>
+
+  <!-- Internal facet line hint -->
+  <line x1="18" y1="10" x2="18" y2="28" stroke="#000" stroke-width="0.6" opacity="0.2"/>
+</svg>

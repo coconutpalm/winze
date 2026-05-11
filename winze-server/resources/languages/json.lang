@@ -1,0 +1,17 @@
+{:tags ["json"]
+ :rules
+ [{:regex #"(//[^\n]*|/\*[\s\S]*?\*/)"
+   :role :token/comment
+   :comment "Comment (JSON5 / JSONC)"}
+  {:regex #"(\"(?:[^\"\\]|\\.)*\")"
+   :role :token/string
+   :comment "String (also used as key)"}
+  {:regex #"((?:true|false|null)\b)"
+   :role :token/keyword
+   :comment "Keyword literal"}
+  {:regex #"([-+]?(?:\d+\.?\d*(?:[eE][-+]?\d+)?))"
+   :role :token/number
+   :comment "Number"}
+  {:regex #"([{}\[\]:,])"
+   :role :token/operator
+   :comment "Punctuation"}]}

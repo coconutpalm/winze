@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <!-- Quill pen icon in Amethyst/Deep Violet -->
+  <!-- Feather body: curved from top-right to bottom-left -->
+  <path d="M14 1c-3 0-5.5 2-7 5L5.5 8.5 4 10l-1.5 4.5L7 13l1.5-1.5L11 9c3-1.5 5-4 5-7
+           a1 1 0 0 0-1-1h-1z"
+        fill="#9B8FE0" fill-opacity="0.85"/>
+  <!-- Spine / rachis -->
+  <line x1="13" y1="2" x2="4" y2="11"
+        stroke="#7B6FC0" stroke-width="0.8" stroke-linecap="round"/>
+  <!-- Nib tip -->
+  <path d="M3.5 11L2.5 14.5 6 13.5z" fill="#7B6FC0"/>
+  <!-- Feather barb lines -->
+  <line x1="11" y1="3" x2="8" y2="5" stroke="#C4B8FF" stroke-width="0.4" stroke-opacity="0.6"/>
+  <line x1="10" y1="5" x2="7" y2="7" stroke="#C4B8FF" stroke-width="0.4" stroke-opacity="0.6"/>
+  <line x1="9" y1="7" x2="6" y2="9" stroke="#C4B8FF" stroke-width="0.4" stroke-opacity="0.6"/>
+</svg>

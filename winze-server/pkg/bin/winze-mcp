@@ -1,0 +1,9 @@
+#!/bin/sh
+# Launch the Winze MCP proxy using the bundled Babashka.
+# This script is designed to be run from the installed location
+# (~/.local/share/winze/) or from a package directory.
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+WINZE_HOME="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+exec "$WINZE_HOME/bin/bb" "$WINZE_HOME/bin/mcp-proxy.clj" "$@"
