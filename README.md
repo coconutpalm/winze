@@ -11,7 +11,8 @@ Winze fixes this. Write planning documents as markdown files in a
 `Plans/` directory; Winze indexes them with vector embeddings so your
 AI recovers full context in seconds — across sessions, across projects.
 A filesystem watcher keeps the index current in real time as you (or
-your AI) edit documents.
+your AI) edit documents.  Edit using the embedded rich Markdown editor or
+the editor of your choice.
 
 ![Winze window with live search](winze-server/docs/winze-screenshot.png)
 
