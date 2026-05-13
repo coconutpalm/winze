@@ -26,14 +26,16 @@ not keywords. One set of files serves both audiences without duplication.
 metadata filters (status, type, group), and a self-maintaining index.
 
 **For humans:** readable files, Git history, meaningful diffs, and a
-native desktop UI with live search.
+native desktop UI with a rich Markdown editor and live search.
 
 ## Key features
 
 - **No API keys, no external services** — embeddings run entirely
   in-JVM via inference4j (all-MiniLM-L12-v2, 384d)
-- **Filesystem watcher** — edits appear in search results within a
-  second, no manual indexing
+- **Rich Markdown editor** — Edit documents with a beautiful styled
+  text editor
+- **Filesystem watcher** — external edits (including by your coding
+  agent appear in search results within a second, no manual indexing
 - **Metadata inference** — status, type, group, and Jira key derived
   automatically from directory/filename conventions (~97% coverage)
 - **Multi-project support** — one store indexes multiple project roots
@@ -54,9 +56,19 @@ native desktop UI with live search.
 | Git commit messages | Too granular; no narrative; no semantic search |
 | AI memory features | Opaque; not version-controlled; limited capacity |
 
-## Quick install
+## Install from source
 
 Requires JDK 21+ on `PATH` ([Eclipse Temurin](https://adoptium.net/) recommended). Everything else is handled automatically.
+
+### On Mac
+
+```bash
+cd winze-server && make dmg
+```
+
+Creates a `dmg` volume with an installable Mac application.
+
+### Other platforms
 
 ```bash
 cd winze-server && make install-winze
@@ -66,6 +78,8 @@ Builds a self-contained package (jlink JRE + uberjar + Babashka),
 installs to `~/.local/share/winze/`, registers the MCP server with
 Claude Code, and installs all slash command skills. The server
 auto-starts on first use.
+
+(Patches to auto-register the MCP server with other agents are welcome!)
 
 See [winze-server/README.md](winze-server/README.md) for full
 documentation, including the [workflow guide](winze-server/docs/workflow.md)
