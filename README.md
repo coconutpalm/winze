@@ -36,7 +36,7 @@ native desktop UI with a rich Markdown editor and live search.
 - **Rich Markdown editor** — Edit documents with a beautiful styled
   text editor
 - **Filesystem watcher** — external edits (including by your coding
-  agent appear in search results within a second, no manual indexing
+  agent) appear in search results within a second, no manual indexing
 - **Metadata inference** — status, type, group, and Jira key derived
   automatically from directory/filename conventions (~97% coverage)
 - **Multi-project support** — one store indexes multiple project roots
