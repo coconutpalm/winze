@@ -84,6 +84,8 @@ These are not yet on the backlog but are natural extensions of the current archi
 
 * **Git-backed diff / history view** — a tab pane or sidebar shelf that shows what changed in the current file across commits.  Since multi-user sync is already via Git, the history is always present; surfacing it in Winze would make reviewing AI-authored changes or tracking plan evolution much faster.
 
+* **Low-power mode** — Lower the embedding thread priority when on laptop battery power.  See: https://github.com/Hakky54/senzu
+
 ---
 
 ## Code Hygiene
