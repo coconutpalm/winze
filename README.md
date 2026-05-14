@@ -29,7 +29,7 @@ not keywords. One set of files serves both audiences without duplication.
 metadata filters (status, type, group), and a self-maintaining index.
 
 **For humans:** readable files, Git history, meaningful diffs, and a
-native desktop UI with a rich Markdown editor and live search.
+native desktop UI with a rich Markdown editor and search-as-you-type.
 
 ## Key features
 
