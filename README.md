@@ -7,7 +7,9 @@ know what you decided last week, why you chose approach A over B, or
 what's half-finished in a branch. You end up re-explaining context, and
 the AI re-reads files it already analyzed.
 
-Winze fixes this. Write planning documents as markdown files in a
+Winze fixes this. 
+
+Iterate with your AI to write planning documents as markdown files in a
 `Plans/` directory; Winze indexes them with vector embeddings so your
 AI recovers full context in seconds — across sessions, across projects.
 A filesystem watcher keeps the index current in real time as you (or
