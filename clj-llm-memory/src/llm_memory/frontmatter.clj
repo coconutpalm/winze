@@ -11,14 +11,23 @@
 (defn parse-frontmatter
   "Extract YAML frontmatter if present.
    Returns [metadata-map, remaining-body-text].
-   If no frontmatter, returns [{}, original-text]."
+   If no frontmatter, returns [{}, original-text].
+   Malformed YAML degrades to [{} body] with a [WARN] printed to stdout
+   so one bad file cannot break callers (search-link open, watcher reindex)."
   [text]
   (if (str/starts-with? text "---\n")
     (let [end (str/index-of text "\n---\n" 4)]
       (if end
         (let [yaml-str (subs text 4 end)
-              fm       (or (yaml/parse-string yaml-str) {})]
-          [fm (subs text (+ end 5))])
+              body     (subs text (+ end 5))
+              fm       (try
+                         (or (yaml/parse-string yaml-str) {})
+                         (catch Exception e
+                           (println "[WARN] frontmatter YAML parse failed —"
+                                    "treating file as having no frontmatter:"
+                                    (.getMessage e))
+                           {}))]
+          [fm body])
         [{} text]))
     [{} text]))
 
@@ -75,6 +84,14 @@
  (let [[fm body] (parse-frontmatter "# No Frontmatter\n\nJust content.")]
    fm := {}
    body := "# No Frontmatter\n\nJust content.")
+ :rcf)
+
+(tests
+ "parse-frontmatter — malformed YAML returns [{} body-after-frontmatter]"
+ (let [bad       "---\nrelated: [[a]] [[b]]\n---\n\n# Body"
+       [fm body] (parse-frontmatter bad)]
+   fm   := {}
+   body := "\n# Body")
  :rcf)
 
 (tests
